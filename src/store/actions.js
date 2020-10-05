@@ -18,6 +18,9 @@ export default {
   async restoreTaskBoard({ commit }, payload) {
     commit("RESTORE_TASKBOARD", payload)
   },
+  async deleteTaskBoard({ commit }, payload) {
+    commit("DELETE_TASKBOARD", payload)
+  },
   async setActiveTaskBoard({ commit }, payload) {
     commit("SET_ACTIVE_TASKBOARD", payload)
   },

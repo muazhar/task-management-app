@@ -39,8 +39,11 @@
             <p class="card-text">{{ board.description }}</p>
           </div>
           <div class="card-footer bg-transparent text-center">
-            <button class="btn btn-sm btn-success" @click="handleRestoreTaskBoard(board)">
+            <button class="btn btn-sm btn-success mr-1" @click="handleRestoreTaskBoard(board)">
               Restore
+            </button>
+            <button class="btn btn-sm btn-danger" @click="handleHardDeleteTaskBoard(board)">
+              Delete
             </button>
           </div>
         </div>
@@ -62,7 +65,8 @@ export default {
     ...mapActions({
       setActiveTaskBoard: "setActiveTaskBoard",
       archiveTaskBoard: "archiveTaskBoard",
-      restoreTaskBoard: "restoreTaskBoard"
+      restoreTaskBoard: "restoreTaskBoard",
+      deleteTaskBoard: "deleteTaskBoard"
     }),
     handleTaskBoardEditing(board) {
       Bus.$emit("taskboard-editing", board)
@@ -72,6 +76,12 @@ export default {
     },
     handleRestoreTaskBoard(board) {
       this.restoreTaskBoard({ boardId: board.id })
+    },
+    handleHardDeleteTaskBoard(board) {
+      this.deleteTaskBoard({
+        boardId: board.id
+      })
+      this.$emit("item-deleted")
     }
   },
   async created() {
