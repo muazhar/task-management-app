@@ -144,5 +144,11 @@ export default {
     if (itemIdx > -1) {
       Vue.delete(list.items, itemIdx)
     }
+  },
+
+  // DELETE BOARD
+  DELETE_TASKBOARD(state, payload) {
+    const boardIdx = state.boards.findIndex(b => b.id == payload.boardId)
+    Vue.delete(state.boards, boardIdx)
   }
 }
